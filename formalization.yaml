@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 107: the Erdős–Szekeres bounds"
+  description: >-
+    Let f(n) be the least N such that any N points in the plane, no three on a line, contain a
+    convex n-gon. Erdős and Szekeres proved 2^(n-2) + 1 ≤ f(n) ≤ C(2n-4, n-2) + 1 for n ≥ 3.
+    This formalizes both bounds as stated in formal-conjectures (Erdős Problem 107,
+    ersz_bounds). The upper bound comes from Linmiao Xu's formalization; the lower bound
+    construction for all n is new.
+  authors:
+    - "Ellweb3"
+    - "Linmiao Xu"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Ellweb3"
+
+classification:
+  arxiv: ["math.CO", "math.MG"]
+  msc2020: ["52C10"]
+
+sources:
+  - title: "On some extremum problems in elementary geometry"
+    authors:
+      - "P. Erdős"
+      - "G. Szekeres"
+    id: "https://www.erdosproblems.com/107"
+    type: "article"
+    location: "Ann. Univ. Sci. Budapest. Eötvös Sect. Math. 3–4 (1960/61), 53–62"
+    relationship: "independently-proves"
+    note: >-
+      The lower bound construction: blocks with short cups and short caps, glued far apart.
+      Written for this formalization with translations by (s, s²) for large s in place of
+      explicit coordinates.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "A combinatorial problem in geometry"
+    authors:
+      - "P. Erdős"
+      - "G. Szekeres"
+    id: "https://www.erdosproblems.com/107"
+    type: "article"
+    location: "Compositio Mathematica 2 (1935), 463–470"
+    relationship: "other"
+    note: "The upper bound, formalized by Linmiao Xu (see related_formalizations)."
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Erdős Problem 107 in google-deepmind/formal-conjectures"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8/FormalConjectures/ErdosProblems/107.lean"
+    type: "formalization"
+    relationship: "other"
+    note: "Source of the definitions and the statement ersz_bounds, copied into Challenge.lean."
+    license: "Apache-2.0"
+
+related_formalizations:
+  - id: "https://github.com/linrock/math-proofs/tree/994b4c04dc4cf77c4b27364e27f179622104c681/erdos-107"
+    relationship: "builds-on"
+    note: >-
+      The four files of Proofs/ other than ErdosSzekeresLower107.lean are copied unchanged. They
+      give the upper bound f(n) ≤ C(2n-4, n-2) + 1 and the non-emptiness of cardSet n.
+
+status:
+  scope: >-
+    The full statement Erdos107.ersz_bounds of formal-conjectures, for all n ≥ 3. The open
+    conjecture erdos_107 (f(n) = 2^(n-2) + 1) is not addressed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5"]
+      framework: "Claude Code"
+      tool_setup: "Claude Code agent writing Lean and compiling it with lake after each step"
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "The human chose the problem and approved each publishing step."
+  spend_usd: "subscription-based"
+  notes: >-
+    The lower bound proof was written by an AI agent (Claude Code) under human direction. The
+    statement was not written by the agent: it is copied from formal-conjectures.
+
+fidelity:
+  divergences: >-
+    NonTrilinear is stated for ℝ² instead of a general oriented Euclidean plane, and the
+    namespace is Erdos107.Palomar instead of Erdos107, as in Linmiao Xu's Palomar formalization.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: >-
+    The statement is copied from formal-conjectures. Comparator checks that the solution
+    proves exactly that statement with the standard axioms.
+
+alignment:
+  namespace: "Erdos107.Palomar"
+  statements:
+    - source: "Erdős and Szekeres (1935, 1960/61)"
+      lean: "Erdos107.Palomar.ersz_bounds"
+      module: "Challenge"
+      status: "proved"
+      note: "2^(n-2) + 1 ≤ f(n) ≤ C(2n-4, n-2) + 1 for n ≥ 3."
+
+acknowledgements: "Mathlib; google-deepmind/formal-conjectures for the statement; Linmiao Xu for the upper bound."

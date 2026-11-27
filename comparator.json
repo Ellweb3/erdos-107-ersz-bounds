@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": ["Erdos107.Palomar.ersz_bounds"],
+  "definition_names": [
+    "Set.Triplewise",
+    "EuclideanGeometry.NonTrilinear",
+    "EuclideanGeometry.ConvexIndep",
+    "EuclideanGeometry.HasConvexNGon",
+    "Erdos107.Palomar.cardSet",
+    "Erdos107.Palomar.f"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}
